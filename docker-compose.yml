@@ -25,7 +25,7 @@ services:
       - 5432:5432
     # In this example, we share an init.sql script with the container
     # The init script will be executed when the database is first run
-    environment:
+    env_file:
         - .env # The name of your environment file (the one at the repository root)
     volumes:
         # In this example, we share the folder `db-data` in our root repository, with the default PostgreSQL data path
