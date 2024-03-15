@@ -16,7 +16,6 @@ router.get('/', async (req, res) => {
 // GET /author/:id - 获取特定作者
 router.get('/:id', async (req, res) => {
   const authorId = req.params.id;
-
   try {
     const author = await Users.findByPk(authorId);
     if (author) {

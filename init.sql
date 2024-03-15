@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS articles (
     updated_at DATE,
     draft BOOLEAN,
     summary TEXT,
-    images JSONB,
+    images VARCHAR[] DEFAULT '{}',
     authors VARCHAR[] DEFAULT '{}',
     layout VARCHAR(255),
     bibliography TEXT,
@@ -34,9 +34,9 @@ CREATE TABLE IF NOT EXISTS users (
 -- 在articles表中插入测试数据
 INSERT INTO articles (title, created_at, tags, updated_at, draft, summary, images, authors, layout, bibliography, canonical_url)
 VALUES 
-    ('文章标题1', '2022-01-01', ARRAY['标签1', '标签2'], '2022-01-01', false, '文章摘要1', '{"image1": "url1", "image2": "url2"}', ARRAY['作者1', '作者2'], '布局1', '参考文献1', 'URL1'),
-    ('文章标题2', '2022-02-01', ARRAY['标签3', '标签4'], '2022-02-01', true, '文章摘要2', '{"image3": "url3", "image4": "url4"}', ARRAY['作者3', '作者4'], '布局2', '参考文献2', 'URL2'),
-    ('文章标题3', '2022-03-01', ARRAY['标签5', '标签6'], '2022-03-01', false, '文章摘要3', '{"image5": "url5", "image6": "url6"}', ARRAY['作者5', '作者6'], '布局3', '参考文献3', 'URL3');
+    ('文章标题1', '2022-01-01', ARRAY['标签1', '标签2'], '2022-01-01', false, '文章摘要1', ARRAY['1', '2'], ARRAY['1', '2'], '布局1', '参考文献1', 'URL1'),
+    ('文章标题2', '2022-02-01', ARRAY['标签3', '标签4'], '2022-02-01', true, '文章摘要2', ARRAY['1', '2'], ARRAY['3', '4'], '布局2', '参考文献2', 'URL2'),
+    ('文章标题3', '2022-03-01', ARRAY['标签5', '标签6'], '2022-03-01', false, '文章摘要3', ARRAY['1', '2'], ARRAY['5', '6'], '布局3', '参考文献3', 'URL3');
 
 -- 在users表中插入测试数据
 INSERT INTO users (name, avatar, occupation, company, email, twitter, linkedin, github, layout)

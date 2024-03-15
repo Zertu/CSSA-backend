@@ -12,6 +12,21 @@ router.get('/articles', async (req, res, next) => {
   }
 });
 
+router.get('/articles/:id', async (req, res) => {
+  const articleId = req.params.id;
+  try {
+    const author = await articles.findByPk(articleId);
+    if (author) {
+      res.json(author);
+    } else {
+      res.status(404).json({ error: 'Article not found' });
+    }
+  } catch (error) {
+    console.error('Error getting author:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
 router.post('/articles', async (req, res, next) => {
   const { title, date, tags, lastmod, draft, summary, images, authors, layout, bibliography, canonicalurl } = req.body;
   try {
