@@ -3,11 +3,13 @@ require('dotenv').config();
 const cors = require('cors');
 
 const articlesRouter = require('./routes/article');
+const authorRouter = require('./routes/author');
 const app = express();
 app.use(express.json());
 app.use(cors()); // 允许跨域请求
 
 app.use('/', articlesRouter);
+app.use('/author', authorRouter);
 
 // 全局错误处理中间件
 app.use((err, req, res) => {
