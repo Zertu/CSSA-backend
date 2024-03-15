@@ -18,7 +18,7 @@ const Articles = sequelize.define('articles', {
     allowNull: false,
   },
   images: {
-    type: DataTypes.JSONB,
+    type: DataTypes.ARRAY(DataTypes.STRING),
     allowNull: false,
   },
   authors: {
