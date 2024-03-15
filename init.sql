@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS users (
     layout VARCHAR(255)
 );
 -- 在articles表中插入测试数据
-INSERT INTO articles (title, date, tags, lastmod, draft, summary, images, authors, layout, bibliography, canonicalUrl)
+INSERT INTO articles (title, createdAt, tags, updatedAt, draft, summary, images, authors, layout, bibliography, canonicalUrl)
 VALUES 
     ('文章标题1', '2022-01-01', ARRAY['标签1', '标签2'], '2022-01-01', false, '文章摘要1', '{"image1": "url1", "image2": "url2"}', ARRAY['作者1', '作者2'], '布局1', '参考文献1', 'URL1'),
     ('文章标题2', '2022-02-01', ARRAY['标签3', '标签4'], '2022-02-01', true, '文章摘要2', '{"image3": "url3", "image4": "url4"}', ARRAY['作者3', '作者4'], '布局2', '参考文献2', 'URL2'),
