@@ -6,16 +6,16 @@ CREATE DATABASE CSSA;
 CREATE TABLE IF NOT EXISTS articles (
     id SERIAL PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
-    date DATE NOT NULL,
+    createdAt DATE NOT NULL,
     tags VARCHAR[] DEFAULT '{}',
-    lastmod DATE,
+    updatedAt DATE,
     draft BOOLEAN,
     summary TEXT,
     images JSONB,
     authors VARCHAR[] DEFAULT '{}',
     layout VARCHAR(255),
     bibliography TEXT,
-    canonicalUrl VARCHAR(255)
+    canonicalurl VARCHAR(255)
 );
 
 -- 创建用户表（如果不存在）

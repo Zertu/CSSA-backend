@@ -1,5 +1,4 @@
 const { Sequelize, DataTypes } = require('sequelize');
-
 const sequelize = new Sequelize({
   dialect: 'postgres',
   host: process.env.POSTGRES_HOST,
@@ -9,7 +8,7 @@ const sequelize = new Sequelize({
   password: process.env.POSTGRES_PASSWORD,
 });
 // 定义文章模型
-const Article = sequelize.define('Article', {
+const Articles = sequelize.define('articles', {
   title: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -50,12 +49,11 @@ const Article = sequelize.define('Article', {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  canonicalUrl: {
+  canonicalurl: {
     type: DataTypes.STRING,
     allowNull: false,
   },
 });
-
 module.exports = {
-  Article,
+  articles: Articles,
 };

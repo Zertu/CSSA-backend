@@ -1,20 +1,21 @@
-const { Article } = require('../model/article');
+const { articles } = require('../model/articles');
 const express = require('express');
 const router = express.Router();
 
 router.get('/articles', async (req, res, next) => {
   try {
-    const articles = await Article.findAll();
-    res.json(articles);
+    const article = await articles.findAll();
+    console.log(article);
+    res.json(article);
   } catch (error) {
     next(error); // 将错误传递给全局错误处理中间件
   }
 });
 
 router.post('/articles', async (req, res, next) => {
-  const { title, date, tags, lastmod, draft, summary, images, authors, layout, bibliography, canonicalUrl } = req.body;
+  const { title, date, tags, lastmod, draft, summary, images, authors, layout, bibliography, canonicalurl } = req.body;
   try {
-    const article = await Article.create({
+    const article = await articles.create({
       title,
       date,
       tags,
@@ -25,9 +26,9 @@ router.post('/articles', async (req, res, next) => {
       authors,
       layout,
       bibliography,
-      canonicalUrl,
+      canonicalurl,
     });
-    res.status(201).json({ message: 'Article created successfully', article });
+    res.status(201).json({ message: 'articles created successfully', article });
   } catch (error) {
     next(error);
   }
@@ -35,11 +36,11 @@ router.post('/articles', async (req, res, next) => {
 
 router.put('/articles/:id', async (req, res, next) => {
   const { id } = req.params;
-  const { title, date, tags, lastmod, draft, summary, images, authors, layout, bibliography, canonicalUrl } = req.body;
+  const { title, date, tags, lastmod, draft, summary, images, authors, layout, bibliography, canonicalurl } = req.body;
   try {
-    const article = await Article.findByPk(id);
+    const article = await articles.findByPk(id);
     if (!article) {
-      return res.status(404).json({ error: 'Article not found' });
+      return res.status(404).json({ error: 'articles not found' });
     }
     article.title = title;
     article.date = date;
@@ -51,9 +52,9 @@ router.put('/articles/:id', async (req, res, next) => {
     article.authors = authors;
     article.layout = layout;
     article.bibliography = bibliography;
-    article.canonicalUrl = canonicalUrl;
+    article.canonicalurl = canonicalurl;
     await article.save();
-    res.json({ message: 'Article updated successfully', article });
+    res.json({ message: 'articles updated successfully', article });
   } catch (error) {
     next(error);
   }
@@ -62,12 +63,12 @@ router.put('/articles/:id', async (req, res, next) => {
 router.delete('/articles/:id', async (req, res, next) => {
   const { id } = req.params;
   try {
-    const article = await Article.findByPk(id);
+    const article = await articles.findByPk(id);
     if (!article) {
-      return res.status(404).json({ error: 'Article not found' });
+      return res.status(404).json({ error: 'articles not found' });
     }
     await article.destroy();
-    res.json({ message: 'Article deleted successfully' });
+    res.json({ message: 'articles deleted successfully' });
   } catch (error) {
     next(error);
   }
