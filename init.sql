@@ -1,9 +1,3 @@
--- 创建数据库（如果不存在）
-CREATE DATABASE IF NOT EXISTS default_database;
-
--- 切换到新创建的数据库
-\c default_database;
-
 -- 创建文章表（如果不存在）
 CREATE TABLE IF NOT EXISTS articles (
     id SERIAL PRIMARY KEY,

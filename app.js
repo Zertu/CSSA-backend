@@ -5,7 +5,7 @@ require('dotenv').config();
 const pool = new Pool({
   user: 'username',
   host: process.env.host,
-  database: 'default_database',
+  database: 'CSSA',
   password: 'password',
   port: '5432'
 });
