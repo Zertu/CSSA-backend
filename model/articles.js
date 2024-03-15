@@ -3,9 +3,14 @@ const sequelize = new Sequelize({
   dialect: 'postgres',
   host: process.env.POSTGRES_HOST,
   port: process.env.POSTGRES_PORT,
-  database: 'CSSA',
+  database: 'cssa',
   username: process.env.POSTGRES_USER,
   password: process.env.POSTGRES_PASSWORD,
+  define: {
+    underscored: true,
+    createdAt: 'created_at',
+    updatedAt: 'updated_at',
+  },
 });
 // 定义文章模型
 const Articles = sequelize.define('articles', {
@@ -13,7 +18,7 @@ const Articles = sequelize.define('articles', {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  date: {
+  createdat: {
     type: DataTypes.DATE,
     allowNull: false,
   },
@@ -21,7 +26,7 @@ const Articles = sequelize.define('articles', {
     type: DataTypes.ARRAY(DataTypes.STRING),
     allowNull: false,
   },
-  lastmod: {
+  updatedat: {
     type: DataTypes.DATE,
     allowNull: false,
   },
@@ -49,7 +54,7 @@ const Articles = sequelize.define('articles', {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  canonicalurl: {
+  canonical_url: {
     type: DataTypes.STRING,
     allowNull: false,
   },

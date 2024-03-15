@@ -6,16 +6,16 @@ CREATE DATABASE cssa;
 CREATE TABLE IF NOT EXISTS articles (
     id SERIAL PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
-    createdAt DATE NOT NULL,
+    created_at DATE NOT NULL,
     tags VARCHAR[] DEFAULT '{}',
-    updatedAt DATE,
+    updated_at DATE,
     draft BOOLEAN,
     summary TEXT,
     images JSONB,
     authors VARCHAR[] DEFAULT '{}',
     layout VARCHAR(255),
     bibliography TEXT,
-    canonicalurl VARCHAR(255)
+    canonical_url VARCHAR(255)
 );
 
 -- 创建用户表（如果不存在）
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS users (
     layout VARCHAR(255)
 );
 -- 在articles表中插入测试数据
-INSERT INTO articles (title, createdAt, tags, updatedAt, draft, summary, images, authors, layout, bibliography, canonicalUrl)
+INSERT INTO articles (title, created_at, tags, updated_at, draft, summary, images, authors, layout, bibliography, canonical_url)
 VALUES 
     ('文章标题1', '2022-01-01', ARRAY['标签1', '标签2'], '2022-01-01', false, '文章摘要1', '{"image1": "url1", "image2": "url2"}', ARRAY['作者1', '作者2'], '布局1', '参考文献1', 'URL1'),
     ('文章标题2', '2022-02-01', ARRAY['标签3', '标签4'], '2022-02-01', true, '文章摘要2', '{"image3": "url3", "image4": "url4"}', ARRAY['作者3', '作者4'], '布局2', '参考文献2', 'URL2'),
