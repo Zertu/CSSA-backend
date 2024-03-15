@@ -17,8 +17,6 @@ CREATE TABLE IF NOT EXISTS articles (
     bibliography TEXT,
     canonical_url VARCHAR(255)
 	"index" int8range NOT NULL,
-	CONSTRAINT articles_pkey PRIMARY KEY (id),
-	CONSTRAINT "itemIndex" UNIQUE ("index")
 );
 
 -- 创建用户表（如果不存在）
