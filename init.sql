@@ -33,8 +33,6 @@ CREATE TABLE IF NOT EXISTS users (
     layout VARCHAR(255)
 );
 
-INSERT INTO articles (title, created_at, tags, updated_at, draft, summary, images, authors, layout, bibliography, canonical_url, "index")
-VALUES 
 INSERT INTO articles (title, created_at, tags, updated_at, draft, summary, images, authors, layout, bibliography, canonical_url, article_index)
 VALUES 
     ('文章标题1', '2022-01-01', ARRAY['标签1', '标签2'], '2022-01-01', false, '文章摘要1', ARRAY['1', '2'], ARRAY['1', '2'], '布局1', '参考文献1', 'URL1', 22),
