@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS articles (
     layout VARCHAR(255),
     bibliography TEXT,
     canonical_url VARCHAR(255),
-	order INT NOT NULL
+	index INT NOT NULL
 );
 
 -- 创建用户表（如果不存在）
