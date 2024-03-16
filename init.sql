@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS articles (
     authors VARCHAR[] DEFAULT '{}',
     layout VARCHAR(255),
     bibliography TEXT,
-    canonical_url VARCHAR(255)
+    canonical_url VARCHAR(255),
 	order INT NOT NULL,
 );
 
