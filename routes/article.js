@@ -31,8 +31,13 @@ router.post('/articles', async (req, res, next) => {
   const date = new Date();
   const lastmod = new Date();
   const bibliography = '';
-  const canonicalurl = '';
-  const { title, tags, draft, summary, images, authors, layout } = req.body;
+  const authors = 'admin';
+  const layout = '';
+  const maxIndexArticle = await articles.findOne({
+    order: [['article_index', 'DESC']],
+  });
+  const article_index = maxIndexArticle ? maxIndexArticle.article_index + 1 : 1;
+  const { title, tags, draft, summary, images, content } = req.body;
   try {
     const article = await articles.create({
       title,
@@ -45,8 +50,10 @@ router.post('/articles', async (req, res, next) => {
       authors,
       layout,
       bibliography,
-      canonicalurl,
+      content,
+      article_index,
     });
+    console.log(res);
     res.status(201).json({ message: 'articles created successfully', article });
   } catch (error) {
     next(error);

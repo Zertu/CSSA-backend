@@ -12,10 +12,12 @@ app.use('/', articlesRouter);
 app.use('/author', authorRouter);
 
 // 全局错误处理中间件
-app.use((err, req, res) => {
-  console.error(err);
+// eslint-disable-next-line no-unused-vars
+app.use((err, req, res, next) => {
+  console.error(err.stack);
   res.status(500).json({ error: 'Internal Server Error' });
 });
+
 // 运行服务器
 const port = 4000;
 app.listen(port, () => {
