@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS articles (
     authors VARCHAR[] DEFAULT '{}',
     layout VARCHAR(255),
     bibliography TEXT,
-    canonical_url VARCHAR(255),
+    content TEXT,
     article_index INT UNIQUE NOT NULL
 );
 
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS users (
     layout VARCHAR(255)
 );
 
-INSERT INTO articles (title, created_at, tags, updated_at, draft, summary, images, authors, layout, bibliography, canonical_url, article_index)
+INSERT INTO articles (title, created_at, tags, updated_at, draft, summary, images, authors, layout, bibliography, content, article_index)
 VALUES 
     ('文章标题1', '2022-01-01', ARRAY['标签1', '标签2'], '2022-01-01', false, '文章摘要1', ARRAY['1', '2'], ARRAY['1', '2'], '布局1', '参考文献1', 'URL1', 22),
     ('文章标题2', '2022-02-01', ARRAY['标签3', '标签4'], '2022-02-01', true, '文章摘要2', ARRAY['1', '2'], ARRAY['3', '4'], '布局2', '参考文献2', 'URL2', 11),
@@ -48,7 +48,7 @@ VALUES
     ('文章标题11', '2022-11-01', ARRAY['标签21', '标签22'], '2022-11-01', true, '文章摘要11', ARRAY['17', '18'], ARRAY['21', '22'], '布局11', '参考文献11', 'URL11', 101),
     ('文章标题12', '2022-12-01', ARRAY['标签23', '标签24'], '2022-12-01', false, '文章摘要12', ARRAY['19', '20'], ARRAY['23', '24'], '布局12', '参考文献12', 'URL12', 111),
     ('文章标题13', '2023-01-01', ARRAY['标签25', '标签26'], '2023-01-01', false, '文章摘要13', ARRAY['21', '22'], ARRAY['25', '26'], '布局13', '参考文献13', 'URL13', 121);
--- 在users表中插入测试数据
+
 INSERT INTO users (name, avatar, occupation, company, email, twitter, linkedin, github, layout)
 VALUES 
     ('用户1', 'avatar1.png', '职业1', '公司1', 'user1@example.com', 'twitter.com/user1', 'linkedin.com/user1', 'github.com/user1', '布局1'),

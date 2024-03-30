@@ -33,8 +33,13 @@ const Articles = sequelize.define('articles', {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  canonical_url: {
+  content: {
     type: DataTypes.STRING,
+    allowNull: false,
+  },
+  article_index: {
+    type: DataTypes.INTEGER,
+    unique: true,
     allowNull: false,
   },
 });

@@ -28,7 +28,11 @@ router.get('/articles/:id', async (req, res) => {
 });
 
 router.post('/articles', async (req, res, next) => {
-  const { title, date, tags, lastmod, draft, summary, images, authors, layout, bibliography, canonicalurl } = req.body;
+  const date = new Date();
+  const lastmod = new Date();
+  const bibliography = '';
+  const canonicalurl = '';
+  const { title, tags, draft, summary, images, authors, layout } = req.body;
   try {
     const article = await articles.create({
       title,
