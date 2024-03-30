@@ -31,7 +31,7 @@ router.post('/articles', async (req, res, next) => {
   const date = new Date();
   const lastmod = new Date();
   const bibliography = '';
-  const authors = 'admin';
+  const authors = ['admin'];
   const layout = '';
   const maxIndexArticle = await articles.findOne({
     order: [['article_index', 'DESC']],
