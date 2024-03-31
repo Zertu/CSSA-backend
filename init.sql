@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS users (
 
 INSERT INTO public.articles
 (id, title, created_at, tags, updated_at, draft, summary, images, authors, layout, bibliography, "content", article_index)
-VALUES(14, '12421424', '2024-03-30', '{}', '2024-03-30', true, '', '{}', '{admin}', '', '', '<p class="PlaygroundEditorTheme__paragraph"><span style="white-space: pre-wrap;">4214214214214124</span></p>', 122);
+VALUES(14, '12421424', '2024-03-30', '{}', '2024-03-30', true, '', '{}', '{1}', '', '', '<p class="PlaygroundEditorTheme__paragraph"><span style="white-space: pre-wrap;">4214214214214124</span></p>', 122);
 
 INSERT INTO users (name, avatar, occupation, company, email, twitter, linkedin, github, layout)
 VALUES 
