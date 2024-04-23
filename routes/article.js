@@ -62,18 +62,22 @@ router.post('/articles', async (req, res, next) => {
 
 router.put('/articles/:id', async (req, res, next) => {
   const { id } = req.params;
-  const { title, date, tags, lastmod, draft, summary, images, authors, layout, bibliography, canonicalurl } = req.body;
+  const { title, tags, draft, summary, images, canonicalurl, content } = req.body;
   try {
     const article = await articles.findByPk(id);
     if (!article) {
       return res.status(404).json({ error: 'articles not found' });
     }
+    const lastmod = new Date();
+    const bibliography = '';
+    const authors = [1];
+    const layout = '';
     article.title = title;
-    article.date = date;
     article.tags = tags;
     article.lastmod = lastmod;
     article.draft = draft;
     article.summary = summary;
+    article.content = content;
     article.images = images;
     article.authors = authors;
     article.layout = layout;
