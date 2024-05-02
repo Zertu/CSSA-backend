@@ -32,6 +32,11 @@ CREATE TABLE IF NOT EXISTS users (
     github VARCHAR(255),
     layout VARCHAR(255)
 );
+-- 创建Tags表
+CREATE TABLE IF NOT EXISTS Tags (
+    id SERIAL PRIMARY KEY,
+    tag_name VARCHAR(50)
+);
 
 INSERT INTO public.articles
 (id, title, created_at, tags, updated_at, draft, summary, images, authors, layout, bibliography, "content", article_index)
