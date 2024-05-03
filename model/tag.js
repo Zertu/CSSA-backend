@@ -1,7 +1,7 @@
 const sequelize = require('./sequelize');
 const { DataTypes } = require('sequelize');
-const Tag = sequelize.define(
-  'Tag',
+const Tags = sequelize.define(
+  'Tags',
   {
     id: {
       type: DataTypes.INTEGER,
@@ -14,9 +14,9 @@ const Tag = sequelize.define(
     },
   },
   {
-    tableName: 'Tags',
-    timestamps: false, // assuming you don't have any timestamp columns
+    createdAt: false,
+    updatedAt: false,
   }
 );
 
-module.exports = Tag;
+module.exports = Tags;
