@@ -5,7 +5,6 @@ const router = express.Router();
 router.get('/articles', async (req, res, next) => {
   try {
     const article = await articles.findAll();
-    console.log(article);
     res.json(article);
   } catch (error) {
     next(error); // 将错误传递给全局错误处理中间件
