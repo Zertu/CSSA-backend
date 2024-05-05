@@ -5,12 +5,14 @@ const cors = require('cors');
 const articlesRouter = require('./routes/article');
 const authorRouter = require('./routes/author');
 const tagRouter = require('./routes/tag');
+const userRouter = require('./routes/user');
 const app = express();
 app.use(express.json());
 app.use(cors()); // 允许跨域请求
 
 app.use('/', articlesRouter);
 app.use('/', tagRouter);
+app.use('/');
 app.use('/author', authorRouter);
 
 // 全局错误处理中间件
