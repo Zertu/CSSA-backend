@@ -1,4 +1,4 @@
-const Tag = require('../model/tag'); // Make sure the path is correct
+const Tag = require('../model/tag');
 const express = require('express');
 const router = express.Router();
 

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Users = require('../model/author');
+const Users = require('../model/user');
 
 // GET /author - 获取所有作者
 router.get('/', async (req, res) => {
