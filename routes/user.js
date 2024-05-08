@@ -126,3 +126,5 @@ router.delete('/users/:id', async (req, res, next) => {
     next(error);
   }
 });
+
+module.exports = router;
