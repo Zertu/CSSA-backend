@@ -1,7 +1,7 @@
 DROP DATABASE IF EXISTS cssa;
 CREATE DATABASE cssa;
 \c cssa
-
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 -- 创建文章表（如果不存在）
 CREATE TABLE IF NOT EXISTS articles (
     id SERIAL PRIMARY KEY,
@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS articles (
 
 -- 创建用户表（如果不存在）
 CREATE TABLE IF NOT EXISTS users (
-    id SERIAL PRIMARY KEY,
+    id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
     email VARCHAR(255),
     emailConfirmed BOOLEAN DEFAULT false,
     name VARCHAR(50),
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS users (
 );
 -- 创建Tags表
 CREATE TABLE IF NOT EXISTS Tags (
-    id SERIAL PRIMARY KEY,
+    id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
     tag_name VARCHAR(50)
 );
 
