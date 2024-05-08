@@ -22,15 +22,17 @@ CREATE TABLE IF NOT EXISTS articles (
 -- 创建用户表（如果不存在）
 CREATE TABLE IF NOT EXISTS users (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    avatar VARCHAR(255),
-    occupation VARCHAR(255),
-    company VARCHAR(255),
     email VARCHAR(255),
-    twitter VARCHAR(255),
-    linkedin VARCHAR(255),
-    github VARCHAR(255),
-    layout VARCHAR(255)
+    emailConfirmed BOOLEAN DEFAULT false,
+    name VARCHAR(50),
+    last_login DATE,
+    displayName VARCHAR(100),
+    avatar VARCHAR(255),
+    gender VARCHAR(50),
+    created_at DATE NOT NULL,
+    updated_at DATE,
+    authority INT[] DEFAULT ARRAY[]::INTEGER[],
+    password VARCHAR(255)
 );
 -- 创建Tags表
 CREATE TABLE IF NOT EXISTS Tags (
@@ -38,6 +40,31 @@ CREATE TABLE IF NOT EXISTS Tags (
     tag_name VARCHAR(50)
 );
 
+INSERT INTO users (
+    email, 
+    emailConfirmed, 
+    name,
+    displayName, 
+    avatar, 
+    gender, 
+    last_login, 
+    created_at, 
+    updated_at,
+    authority, 
+    password
+) VALUES (
+    'admin@example.com', 
+    true, 
+    'admin', 
+    'Admin', 
+    'https://www.library.mun.ca/media/MUNLibrary/images/memorial-university-logo-for_dark_bg.png', 
+    'M', 
+    '2024-03-30', 
+    '2024-03-30',
+    '2024-03-30',
+    '{1}', 
+    'your_password_here'
+);
 INSERT INTO public.articles
 (id, title, created_at, tags, updated_at, draft, summary, images, authors, layout, bibliography, "content", article_index)
 VALUES(14, '12421424', '2024-03-30', '{}', '2024-03-30', true, '', '{}', '{1}', '', '', '<p class="PlaygroundEditorTheme__paragraph"><span style="white-space: pre-wrap;">4214214214214124</span></p>', 122);
