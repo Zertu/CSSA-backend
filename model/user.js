@@ -23,7 +23,7 @@ const Users = sequelize.define('users', {
   gender: {
     type: DataTypes.STRING(50),
   },
-  location: {
+  last_login: {
     type: DataTypes.STRING(100),
   },
   authority: {

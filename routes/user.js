@@ -54,7 +54,7 @@ router.post('/users', async (req, res, next) => {
 router.get('/users', async (req, res, next) => {
   try {
     const users = await User.findAll({
-      attributes: ['id', 'username'],
+      attributes: ['id', 'name', 'displayname', 'email', 'last_login'],
     });
     res.json(users);
   } catch (error) {
