@@ -26,6 +26,9 @@ const Users = sequelize.define('users', {
   last_login: {
     type: DataTypes.STRING(100),
   },
+  membershipId: {
+    type: DataTypes.STRING(100),
+  },
   authority: {
     type: DataTypes.ARRAY(DataTypes.INTEGER),
     allowNull: false,
