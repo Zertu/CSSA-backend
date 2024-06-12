@@ -3,7 +3,7 @@ require('dotenv').config();
 const cors = require('cors');
 
 const articlesRouter = require('./routes/article');
-// const authorRouter = require('./routes/author');
+const authorRouter = require('./routes/author');
 const tagRouter = require('./routes/tag');
 const userRouter = require('./routes/user');
 const app = express();
@@ -13,7 +13,7 @@ app.use(cors()); // 允许跨域请求
 app.use('/', articlesRouter);
 app.use('/', tagRouter);
 app.use('/', userRouter);
-// app.use('/author', authorRouter);
+app.use('/author', authorRouter);
 
 // 全局错误处理中间件
 // eslint-disable-next-line no-unused-vars
