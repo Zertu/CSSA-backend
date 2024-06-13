@@ -29,6 +29,7 @@ CREATE TABLE IF NOT EXISTS users (
     displayName VARCHAR(100),
     avatar VARCHAR(255),
     gender VARCHAR(50),
+    membershipid VARCHAR(255),
     created_at DATE NOT NULL,
     updated_at DATE,
     authority INT[] DEFAULT ARRAY[]::INTEGER[],
@@ -51,6 +52,7 @@ INSERT INTO users (
     created_at, 
     updated_at,
     authority, 
+    membershipId,
     password
 ) VALUES (
     'admin@example.com', 
@@ -63,19 +65,14 @@ INSERT INTO users (
     '2024-03-30',
     '2024-03-30',
     '{1}', 
+    '123123', 
     'your_password_here'
 );
 INSERT INTO public.articles
 (id, title, created_at, tags, updated_at, draft, summary, images, authors, layout, bibliography, "content", article_index)
 VALUES(14, '12421424', '2024-03-30', '{}', '2024-03-30', true, '', '{}', '{1}', '', '', '<p class="PlaygroundEditorTheme__paragraph"><span style="white-space: pre-wrap;">4214214214214124</span></p>', 122);
 
-INSERT INTO users (name, avatar, emailConfirmed, displayName, email, gender, membershipId, password, authority)
+INSERT INTO Tags (tag_name)
 VALUES 
-    ('用户1', 'avatar1.png', true, '公司1', 'user1@example.com', 'twitter.com/user1', 'linkedin.com/user1', 'github.com/user1', '布局1'),
-    ('用户2', 'avatar2.png', true, '公司2', 'user2@example.com', 'twitter.com/user2', 'linkedin.com/user2', 'github.com/user2', '布局2'),
-    ('用户3', 'avatar3.png', true, '公司3', 'user3@example.com', 'twitter.com/user3', 'linkedin.com/user3', 'github.com/user3', '布局3');
-
-INSERT INTO Tags (TagID, TagName)
-VALUES 
-(1, '驾照'),
-(2, '学习');
+('驾照'),
+('学习');

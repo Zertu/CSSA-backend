@@ -4,8 +4,7 @@ const Tags = sequelize.define(
   'Tags',
   {
     id: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
+      type: DataTypes.STRING(50),
       primaryKey: true,
     },
     tag_name: {
