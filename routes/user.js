@@ -1,13 +1,16 @@
-const { hashPassword, verifiedPassword } = require('../utils/crypto');
+const { hashPassword, verifyPassword } = require('../utils/crypto');
 const User = require('../model/user');
 const express = require('express');
+const jwt = require('jsonwebtoken');
+const { secret } = require('../utils/jwt');
+
 const router = express.Router();
 
 // 注册新用户
 router.post('/users/register', async (req, res, next) => {
   const { username, password } = req.body;
   try {
-    const hashedPassword = await hashPassword(password);
+    const hashedPassword = await hashPassword(`${password}`);
     const user = await User.create({
       username,
       password: hashedPassword,
@@ -18,19 +21,37 @@ router.post('/users/register', async (req, res, next) => {
   }
 });
 
+router.post('/users/reset', async (req, res, next) => {
+  const { username } = req.body;
+  try {
+    const hashedPassword = await hashPassword('123456');
+    const user = await User.findOne({ where: { name: username } });
+    user.password = hashedPassword;
+    user.save();
+    res.status(201).json({ message: 'User password updated successfully', user });
+  } catch (error) {
+    next(error);
+  }
+});
+
 // 用户登录
 router.post('/users/login', async (req, res, next) => {
   const { username, password } = req.body;
   try {
-    const user = await User.findOne({ where: { username } });
+    const user = await User.findOne({ where: { name: username } });
     if (!user) {
       return res.status(404).json({ error: 'User not found' });
     }
-    const match = await verifiedPassword(password, user.password);
+    const match = await verifyPassword(password, user.password);
     if (!match) {
       return res.status(401).json({ error: 'Incorrect password' });
     }
-    res.json({ message: 'Logged in successfully', user });
+    const accessToken = jwt.sign(
+      { exp: Math.floor(Date.now() / 1000) + 60 * 60, username, authority: user.authority.join(',') },
+      secret
+    );
+
+    res.json({ message: 'Logged in successfully', data: { ...user, token: accessToken } });
   } catch (error) {
     next(error);
   }
@@ -39,7 +60,7 @@ router.post('/users/login', async (req, res, next) => {
 router.post('/users', async (req, res, next) => {
   const { username, password } = req.body;
   try {
-    const hashedPassword = await hashPassword(password);
+    const hashedPassword = await hashPassword(`${password}`);
     const user = await User.create({
       username,
       password: hashedPassword,
@@ -58,6 +79,7 @@ router.get('/users', async (req, res, next) => {
     });
     res.json(users);
   } catch (error) {
+    console.log(error);
     next(error);
   }
 });

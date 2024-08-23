@@ -6,9 +6,19 @@ const articlesRouter = require('./routes/article');
 const authorRouter = require('./routes/author');
 const tagRouter = require('./routes/tag');
 const userRouter = require('./routes/user');
+const { jwt } = require('./utils/jwt');
 const app = express();
-app.use(express.json());
+
 app.use(cors()); // 允许跨域请求
+app.use(jwt);
+app.use(function (err, req, res, next) {
+  if (err.name === 'UnauthorizedError') {
+    res.status(401).send('invalid token...');
+  } else {
+    next(err);
+  }
+});
+app.use(express.json());
 
 app.use('/', articlesRouter);
 app.use('/', tagRouter);

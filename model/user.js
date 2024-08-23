@@ -10,11 +10,11 @@ const Users = sequelize.define('users', {
     type: DataTypes.STRING(255),
     validate: { isEmail: true },
   },
-  emailConfirmed: {
+  email_confirmed: {
     type: DataTypes.BOOLEAN,
     defaultValue: false,
   },
-  displayName: {
+  display_name: {
     type: DataTypes.STRING(100),
   },
   avatar: {
@@ -26,7 +26,7 @@ const Users = sequelize.define('users', {
   last_login: {
     type: DataTypes.STRING(100),
   },
-  membershipId: {
+  membership_id: {
     type: DataTypes.STRING(100),
   },
   authority: {

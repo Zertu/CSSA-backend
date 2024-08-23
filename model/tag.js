@@ -11,6 +11,10 @@ const Tags = sequelize.define(
       type: DataTypes.STRING(50),
       allowNull: false,
     },
+    tag_count: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
   },
   {
     createdAt: false,
